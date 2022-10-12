@@ -1,0 +1,43 @@
+<template>
+  <tab-bar>
+    <tab-bar-item path="/home">
+        <img slot="normal-img" src="~assets/img/tabbar/home.svg"/>
+        <img slot="active-img" src="~assets/img/tabbar/home_active.svg"/>
+        <span slot="item-text">首页</span>
+    </tab-bar-item>
+
+    <tab-bar-item path="/category">
+        <img slot="normal-img" src="~assets/img/tabbar/category.svg"/>
+        <img slot="active-img" src="~assets/img/tabbar/category_active.svg"/>
+        <span slot="item-text">分类</span>
+    </tab-bar-item>
+
+    <tab-bar-item path="/cart">
+        <img slot="normal-img" src="~assets/img/tabbar/shopcart.svg"/>
+        <img slot="active-img" src="~assets/img/tabbar/shopcart_active.svg"/>
+        <span slot="item-text">购物</span>
+    </tab-bar-item>
+    
+    <tab-bar-item path="/me">
+        <img slot="normal-img" src="~assets/img/tabbar/profile.svg"/>
+        <img slot="active-img" src="~assets/img/tabbar/profile_active.svg"/>
+        <span slot="item-text">我的</span>
+    </tab-bar-item>
+  </tab-bar>
+</template>
+
+<script>
+import TabBarItem from "components/common/tabbar/TabBarItem.vue";
+import TabBar from "components/common/tabbar/TabBar.vue";
+export default {
+    components:{
+        TabBar,
+        TabBarItem
+    }
+}
+
+</script>
+
+<style>
+
+</style>
