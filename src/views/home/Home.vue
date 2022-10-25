@@ -7,7 +7,7 @@
     <home-recommend :recommends="recommends" />
     <home-feature />
 
-    <tab-control :titles="['流行', '新款', '精选']" />
+    <tab-control :titles="['流行', '新款', '精选']" @tabItemIndex="tabItemClick"/>
     <goods-list :goodsItem="getGoodsList" />
     <ul>
       <li>1</li>
@@ -64,6 +64,19 @@ export default {
     },
   },
   methods: {
+    tabItemClick(index){
+      switch(index){
+        case 0:
+          this.currentType="pop";
+          break;
+        case 1:
+          this.currentType="new";
+          break;
+        case 2:
+          this.currentType="sell";
+          break;
+      }
+    },
     //获取轮播图、推荐数据
     getHomeMultiData() {
       getHomeMultiData().then((res) => {
@@ -79,7 +92,7 @@ export default {
       getHomeGoodsInfo(type, pageNum).then((res) => {
         //将获取的数据保存 修改对应类型商品数据
         //console.log(res);
-        this.goods[type].list = res.data.list;
+        this.goods[type].list.push(...res.data.list) ;
         //下次请求 页码加一
         this.goods[type].page++;
       });
