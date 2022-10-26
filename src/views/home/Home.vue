@@ -3,21 +3,25 @@
     <nav-bar class="home-nav-bar">
       <span slot="center">购物商城</span>
     </nav-bar>
-    <home-swiper :banners="banners" />
-    <home-recommend :recommends="recommends" />
-    <home-feature />
 
-    <tab-control :titles="['流行', '新款', '精选']" @tabItemIndex="tabItemClick"/>
-    <goods-list :goodsItem="getGoodsList" />
-    <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
+    <b-scroll :probeType="3" :pullUpLoad="false" class="b-scroll">
+      <home-swiper :banners="banners" />
+      <home-recommend :recommends="recommends" />
+      <home-feature />
+
+      <tab-control :titles="['流行', '新款', '精选']" @tabItemIndex="tabItemClick"/>
+      <goods-list :goodsItem="getGoodsList" />
+      <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+    </b-scroll>
+    
   </div>
 </template>
 
@@ -28,6 +32,7 @@ import HomeRecommend from "./childComp/HomeRecommend";
 import HomeFeature from "./childComp/HomeFeature";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goodsList/GoodsList";
+import BScroll from "components/content/bScroll/BScroll";
 
 import { getHomeMultiData, getHomeGoodsInfo } from "network/home";
 export default {
@@ -50,6 +55,7 @@ export default {
     HomeFeature,
     TabControl,
     GoodsList,
+    BScroll
   },
   created() {
     this.getHomeMultiData();
@@ -102,9 +108,17 @@ export default {
 </script>
 
 <style scoped>
+#home {
+  position: relative;
+  height: 100vh;
+}
 .home-nav-bar {
   background-color: var(--color-tint);
   color: white;
   font-weight: 700;
+}
+.b-scroll{
+  overflow: hidden;
+  height: calc(100% - 93px);
 }
 </style>
